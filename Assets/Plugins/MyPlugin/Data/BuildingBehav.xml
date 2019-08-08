@@ -1,0 +1,8 @@
+<root>
+  <checkState main="1">
+    <animation name="idle" />
+    <weaponState name="null" />
+    <handleItem name="tree" />
+    <changeState name="0" />
+  </checkState>
+</root>

@@ -1,0 +1,16 @@
+﻿{
+"ConfigInfo":
+[
+{"Key":"本配置文件说明"},
+
+{"Key":"StartUIForm",
+"Value":"UIForms_Prefabs\\StartUIForm"},
+
+{"Key":"GameGuideUIForm",
+"Value":"UIForms_Prefabs\\GameGuideUIForm"},
+
+{"Key":"GamePlayingUIForm",
+"Value":"UIForms_Prefabs\\GamePlayingUIForm"}
+
+]
+}
