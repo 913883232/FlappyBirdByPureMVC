@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Model_GameData : MonoBehaviour
+public class Model_GameData
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    public int GameTime { set; get; }
+    public int Scores { set; get; }
+    public int HighestScores { set; get; }
 }

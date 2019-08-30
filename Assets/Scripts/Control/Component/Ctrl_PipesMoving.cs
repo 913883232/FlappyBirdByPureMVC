@@ -15,17 +15,17 @@ public class Ctrl_PipesMoving : MonoBehaviour
     public void StopGame()
     {
         _IsStartGame = false;
+        ResetPipesPosition();
     }
 
     void Start()
     {
         _VecOriginalPosition = transform.position;
-        ResetPipesPosition();
     }
 
     void Update()
     {
-        if (transform.position.x < -4f)
+        if (transform.position.x < -15f)
         {
             transform.position = _VecOriginalPosition;
         }

@@ -16,6 +16,7 @@ public class Ctrl_PlayerControl : MonoBehaviour
     {
         _IsGameStart = true;
         rig2D.isKinematic = false;
+        this.gameObject.transform.position = _PlayerOriginalPos;
     }
 
     //游戏结束
@@ -23,13 +24,16 @@ public class Ctrl_PlayerControl : MonoBehaviour
     {
         _IsGameStart = false;
         DisableRigidbody2D();
-        this.gameObject.transform.position = _PlayerOriginalPos;
+    }
+
+    private void Awake()
+    {
+        rig2D = GetComponent<Rigidbody2D>();
     }
 
     void Start()
     {
         _PlayerOriginalPos = this.gameObject.transform.position;
-        rig2D = GetComponent<Rigidbody2D>();
         DisableRigidbody2D();
     }
 

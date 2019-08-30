@@ -19,6 +19,7 @@ public class ApplicationFacade : Facade
     {
         //得到层级视图的根对象
         GameObject goEnviromentRoot = GameObject.Find("MainGameScene");
+        goEnviromentRoot.AddComponent<Ctrl_GetTime>();
 
         //添加主角控制脚本
         GameObject.FindGameObjectWithTag("Player").AddComponent<Ctrl_PlayerControl>();
@@ -26,5 +27,11 @@ public class ApplicationFacade : Facade
         UnityHelper.AddChildNodeCompnent<Ctrl_LandMoving>(goEnviromentRoot, "GameLanding");
 
         UnityHelper.AddChildNodeCompnent<Ctrl_PipesMoving>(goEnviromentRoot, "GamePipes");
+
+        for (int i = 0; i < 3; i++)
+        {
+            UnityHelper.AddChildNodeCompnent<Ctrl_Pipe>(goEnviromentRoot, "pipe_" + i + "_down");
+            UnityHelper.AddChildNodeCompnent<Ctrl_Pipe>(goEnviromentRoot, "pipe_" + i + "_up");
+        }
     }
 }
