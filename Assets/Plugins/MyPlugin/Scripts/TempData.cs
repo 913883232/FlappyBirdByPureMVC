@@ -20,8 +20,4 @@ public class Behaviour
 
     public int[] indexs = new int[ConstConfig.BEHAV_LENGTH_L4 - 1];
     public string[] names = new string[ConstConfig.BEHAV_LENGTH_L4];
-    //public int animInt;
-    //public string animation;
-    //public string weaponState;
-    //public string handleItem;
 }

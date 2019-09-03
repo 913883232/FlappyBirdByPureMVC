@@ -7,8 +7,11 @@ using System.IO;
 
 public class FirstPlugin : EditorWindow
 {
-    private Dictionary<int, int> dict = new Dictionary<int, int>();
+    //临时存储
+    private Dictionary<int, int> tempDict = new Dictionary<int, int>();
+    //记录主行为
     private List<int> mainStates = new List<int>();
+    //记录跳转行为
     private List<int> changeStates = new List<int>();
 
     private TempData tempData = null;
@@ -23,7 +26,7 @@ public class FirstPlugin : EditorWindow
     static void Init()
     {
         FirstPlugin window = (FirstPlugin)EditorWindow.GetWindow(typeof(FirstPlugin), true, "主行为编辑");
-        x = (float)Screen.width;
+        x = (float)1500;
         y = (float)Screen.height / 2;
         window.position = new Rect(x, y, 322f, 544f);
         window.Show();
@@ -43,10 +46,11 @@ public class FirstPlugin : EditorWindow
         for (int i = 0; i < mainStates.Count; i++)
         {
             GUILayout.BeginHorizontal();
-            GUILayout.Label("MainStep" + (i + 1), EditorStyles.boldLabel);
+            GUILayout.Label("MainStep" + (i), EditorStyles.boldLabel);
             button = GUILayout.Button("点击编辑");
-            dict[i] = int.Parse(GUILayout.TextField(dict[i].ToString(), EditorStyles.textField));
-            changeStates[i] = dict[i];
+            GUILayout.Label("跳转至-->");
+            tempDict[i] = int.Parse(GUILayout.TextField(tempDict[i].ToString(), EditorStyles.textField));
+            changeStates[i] = tempDict[i];
             GUILayout.EndHorizontal();
             if (button)
             {
@@ -76,9 +80,9 @@ public class FirstPlugin : EditorWindow
     }
     void AddMainStep()
     {
+        tempDict.Add(index, 0);
         index++;
-        dict.Add(index - 1, 0);
-        changeStates.Add(0);
+        changeStates.Add(index);
         mainStates.Add(index);
         Behaviour behaviour = new Behaviour();
         tempData.behaviours.Add(behaviour);
@@ -91,7 +95,7 @@ public class FirstPlugin : EditorWindow
             index = 0;
             return;
         }
-        dict.Remove(index);
+        tempDict.Remove(index);
         changeStates.RemoveAt(index);
         mainStates.RemoveAt(index);
         tempData.behaviours.RemoveAt(index);
@@ -111,7 +115,7 @@ public class FirstPlugin : EditorWindow
     void ResetAll()
     {
         index = 0;
-        dict.Clear();
+        tempDict.Clear();
         mainStates.Clear();
         changeStates.Clear();
         tempData.behaviours.Clear();
@@ -129,7 +133,7 @@ public class FirstPlugin : EditorWindow
         xmlDoc.AppendChild(root);
 
 
-        for (int i = 0; i < dict.Count; i++)
+        for (int i = 0; i < tempDict.Count; i++)
         {
             bool[] toggles_LevelFourth = tempData.behaviours[i].toggles_LevelFourth;
             XmlElement group = xmlDoc.CreateElement(ConstConfig._checkState);

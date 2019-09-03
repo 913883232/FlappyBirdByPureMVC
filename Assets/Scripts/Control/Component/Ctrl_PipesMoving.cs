@@ -25,11 +25,14 @@ public class Ctrl_PipesMoving : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.x < -15f)
+        if (_IsStartGame)
         {
-            transform.position = _VecOriginalPosition;
+            if (transform.position.x < -15f)
+            {
+                transform.position = _VecOriginalPosition;
+            }
+            transform.Translate(Vector2.left * Time.deltaTime * movingSpeed);
         }
-        transform.Translate(Vector2.left * Time.deltaTime * movingSpeed);
     }
 
     //管道复位

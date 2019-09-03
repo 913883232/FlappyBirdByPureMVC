@@ -5,8 +5,10 @@ using UnityEditor;
 
 public class SecondWindow : EditorWindow
 {
-    private string[] animations = new string[] { "idle", "rest", "sleep", "build", "cutTree", "hoeing", "sideCarry", "forwardCarry", "notCarry" };
-    private string[] weaponName = new string[] { "null", "dingpa", "fazhang", "gongjian_1", "gongjian_2", "hammer", "hatchet", "jian" };
+    private string[] animations = new string[] { "idle", "rest", "sleep", "build", "cutTree", "quarry", "hoeing", "seed", "watering", "harvest", "hunt", "archery", "cutMeat", "sideCarry", "forwardCarry", "topCarry", "notCarry" };
+    private string[] weaponName = new string[] { "dingpa", "fazhang", "gongjian_1", "gongjian_2", "hammer", "hatchet", "jian", "dao", "gong", "kuangchu", "liaodao", "tong" };
+    private string[] interiorAnimations = new string[] { "idle", "rest", "sleep" };
+    //枚举列表
     private List<string[]> options = new List<string[]>();
 
 
@@ -65,22 +67,6 @@ public class SecondWindow : EditorWindow
             GUILayout.EndHorizontal();
         }
 
-        //GUILayout.BeginHorizontal();
-        //tempData.behaviours[index].toggles[2] = EditorGUILayout.Toggle("weaponState", tempData.behaviours[index].toggles[2]);
-        //if (tempData.behaviours[index].toggles[2])
-        //{
-        //    tempData.behaviours[index].weaponState = GUILayout.TextField(tempData.behaviours[index].weaponState, EditorStyles.textField);
-        //}
-        //GUILayout.EndHorizontal();
-
-        //GUILayout.Label("handleItem", EditorStyles.boldLabel);
-        //GUILayout.BeginHorizontal();
-        //tempData.behaviours[index].toggles[3] = EditorGUILayout.Toggle("handleItem", tempData.behaviours[index].toggles[3]);
-        //if (tempData.behaviours[index].toggles[3])
-        //{
-        //    tempData.behaviours[index].handleItem = GUILayout.TextField(tempData.behaviours[index].handleItem, EditorStyles.textField);
-        //}
-        //GUILayout.EndHorizontal();
 
         if (GUILayout.Button("确定"))
         {

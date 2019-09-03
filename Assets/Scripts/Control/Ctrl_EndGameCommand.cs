@@ -10,6 +10,9 @@ public class Ctrl_EndGameCommand : SimpleCommand
     {
         StopScriptRunning();
         CloseCurrentUIForm();
+        //保存当前最高分数
+        Model_GameDataProxy gameData = Facade.RetrieveProxy(Model_GameDataProxy.NAME) as Model_GameDataProxy;
+        gameData.SaveHighestScores();
     }
 
     private void StopScriptRunning()
@@ -22,6 +25,12 @@ public class Ctrl_EndGameCommand : SimpleCommand
         UnityHelper.FindTheChildNode(goEnviromentRoot, "GamePipes").GetComponent<Ctrl_PipesMoving>().StopGame();
 
         goEnviromentRoot.GetComponent<Ctrl_GetTime>().StopGame();
+        //“金币”道具停止
+        for (int i = 0; i < 3; i++)
+        {
+            //金币道具开始运行
+            UnityHelper.FindTheChildNode(goEnviromentRoot, "pipe_" + i + "_trigger").GetComponent<Ctrl_Gold>().StopGame();
+        }
     }
 
     private void CloseCurrentUIForm()
